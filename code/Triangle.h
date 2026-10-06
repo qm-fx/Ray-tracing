@@ -17,7 +17,7 @@ __device__ bool HitTriangle(const float3 pos_0, const float3 pos_1, const float3
 
     bool flag1 = fabs(det) < 0.0000001f;
     if (flag1)
-        return false; // 平行或退化
+        return false; // 脝陆脨脨禄貌脥脣禄炉
 
     float inv_det = 1.0f / det;
     float3 T = ray.origin - pos_0;
