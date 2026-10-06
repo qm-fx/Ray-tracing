@@ -7,7 +7,7 @@ extern std::vector<material> material_vector;
 
 void TriangleScene()
 {
-    //×ó ºìÉ«Ç½±Ú
+    //æ£ ç¢•å¼¼èƒ½è¬
     material red{ make_float3(0.6f, 0.2f, 0.2f),0.2f};
     material_vector.push_back(red);
     Triangle tri = {0,
@@ -23,7 +23,7 @@ void TriangleScene()
         { 1,0,0 } };
     triangle_vector.push_back(tri);
 
-    //ÓÒ À¶É«Ç½±Ú
+    //å˜” æ¸…å¼¼èƒ½è¬
     material blue{ make_float3(0.2f, 0.2f, 0.6f),0.2f};
     material_vector.push_back(blue);
     tri = {1,
@@ -39,13 +39,13 @@ void TriangleScene()
         { -1,0,0 }};
     triangle_vector.push_back(tri);
 
-    //»Ò°×É«Ç½±Ú
+    //å­æ˜“å¼¼èƒ½è¬
     material white{ make_float3(0.7f, 0.7f, 0.7f),0.2f};
     material_vector.push_back(white);
     material white_top{ make_float3(0.7f, 0.7f, 0.7f),0.95f };
     material_vector.push_back(white_top);
 
-    //ÏÂ
+    //å’Œ
     tri = {2,
         { {-3.f, -3.f,  5.f},
         { 3.f, -3.f,  5.f},
@@ -59,7 +59,7 @@ void TriangleScene()
         { 0,1,0 }};
     triangle_vector.push_back(tri);
 
-    //ÉÏ
+    //è²§
     tri = {3,
         { {-3.f, 3.f,  5.f},
         { 3.f, 3.f,  5.f},
@@ -73,7 +73,7 @@ void TriangleScene()
         { 0,-1,0 }};
     triangle_vector.push_back(tri);
 
-    //Ç°
+    //å¿µ
 
     tri = {2,
         { {-3.f, -3.f,  5.f},
@@ -88,7 +88,7 @@ void TriangleScene()
         { 0,0,-1 }};
     triangle_vector.push_back(tri);
 
-    //ºó
+    //æœ”
     tri = {2,
         { { 3.f, -3.f, -5.f},
         {-3.f, -3.f, -5.f},
