@@ -48,7 +48,7 @@ void LoadFile(std::string str, unsigned int material_id)
             int i = 0;
             while (ins >> tmp[i] >> a>> /*tem >>*/ a >> tmp[3])
             {
-                tmp[i] -= 1;//½«ËùÓĞÊı¼õÒ»£¬ÊıÑ§ÖĞÒÔ1ÎªÆğÊ¼£¬¼ÆËã»úÖĞÒÔ0ÎªÆğÊ¼  
+                tmp[i] -= 1;//å°†æ‰€æœ‰æ•°å‡ä¸€ï¼Œæ•°å­¦ä¸­ä»¥1ä¸ºèµ·å§‹ï¼Œè®¡ç®—æœºä¸­ä»¥0ä¸ºèµ·å§‹  
                 i++;
             }
             Triangle t{ material_id, { pos_list[tmp[0]], pos_list[tmp[1]], pos_list[tmp[2]] },
