@@ -6,34 +6,34 @@
 #include <vector>
 //#include <windows.h>
 
-#pragma pack(push, 1) // ÑÏ¸ñ1×Ö½Ú¶ÔÆë
+#pragma pack(push, 1) // ä¸¥æ ¼1å­—èŠ‚å¯¹é½
 struct BMPHeader {
     uint16_t signature = 0x4D42;      // 'BM'
-    uint32_t fileSize;                // ÎÄ¼ş×Ü´óĞ¡
-    uint32_t reserved = 0;            // ±£Áô×Ö¶Î
-    uint32_t dataOffset = 54;         // ÏñËØÊı¾İÆ«ÒÆÁ¿
-    uint32_t headerSize = 40;         // ĞÅÏ¢Í·´óĞ¡
-    int32_t  width;                   // Í¼Ïñ¿í¶È
-    int32_t  height;                  // Í¼Ïñ¸ß¶È£¨¸ºÖµ±íÊ¾´ÓÉÏµ½ÏÂ´æ´¢£©
-    uint16_t planes = 1;              // ÑÕÉ«Æ½ÃæÊı
-    uint16_t bpp = 24;                // Ã¿ÏñËØÎ»Êı£¨24Î»É«£©
-    uint32_t compression = 0;         // Ñ¹Ëõ·½Ê½£¨0=²»Ñ¹Ëõ£©
-    uint32_t imageSize;               // ÏñËØÊı¾İ´óĞ¡
-    int32_t  xPixelsPerMeter = 0;     // Ë®Æ½·Ö±æÂÊ
-    int32_t  yPixelsPerMeter = 0;     // ´¹Ö±·Ö±æÂÊ
-    uint32_t colorsUsed = 0;          // Êµ¼ÊÊ¹ÓÃµÄÑÕÉ«Êı
-    uint32_t importantColors = 0;     // ÖØÒªÑÕÉ«Êı
+    uint32_t fileSize;                // æ–‡ä»¶æ€»å¤§å°
+    uint32_t reserved = 0;            // ä¿ç•™å­—æ®µ
+    uint32_t dataOffset = 54;         // åƒç´ æ•°æ®åç§»é‡
+    uint32_t headerSize = 40;         // ä¿¡æ¯å¤´å¤§å°
+    int32_t  width;                   // å›¾åƒå®½åº¦
+    int32_t  height;                  // å›¾åƒé«˜åº¦ï¼ˆè´Ÿå€¼è¡¨ç¤ºä»ä¸Šåˆ°ä¸‹å­˜å‚¨ï¼‰
+    uint16_t planes = 1;              // é¢œè‰²å¹³é¢æ•°
+    uint16_t bpp = 24;                // æ¯åƒç´ ä½æ•°ï¼ˆ24ä½è‰²ï¼‰
+    uint32_t compression = 0;         // å‹ç¼©æ–¹å¼ï¼ˆ0=ä¸å‹ç¼©ï¼‰
+    uint32_t imageSize;               // åƒç´ æ•°æ®å¤§å°
+    int32_t  xPixelsPerMeter = 0;     // æ°´å¹³åˆ†è¾¨ç‡
+    int32_t  yPixelsPerMeter = 0;     // å‚ç›´åˆ†è¾¨ç‡
+    uint32_t colorsUsed = 0;          // å®é™…ä½¿ç”¨çš„é¢œè‰²æ•°
+    uint32_t importantColors = 0;     // é‡è¦é¢œè‰²æ•°
 };
-#pragma pack(pop) // »Ö¸´Ä¬ÈÏ¶ÔÆë
+#pragma pack(pop) // æ¢å¤é»˜è®¤å¯¹é½
 
 void saveBMP(const char* filename, uchar3* pixels, int width, int height) {
-    // 1. ×¼±¸BMPÍ·
+    // 1. å‡†å¤‡BMPå¤´
     BMPHeader header;
     header.width = width;
     header.height = height;
-    header.fileSize = sizeof(BMPHeader) + width * height * 3; // RGB¸ñÊ½
+    header.fileSize = sizeof(BMPHeader) + width * height * 3; // RGBæ ¼å¼
 
-    // 2.Ğ´ÈëBMPÎÄ¼ş(BMPÒªÇóBGRË³ĞòÇÒÎŞAlpha)
+    // 2.å†™å…¥BMPæ–‡ä»¶(BMPè¦æ±‚BGRé¡ºåºä¸”æ— Alpha)
     uint8_t* rgb_data = (uint8_t*)malloc(width * height * 3*sizeof(uint8_t));
     for (int y = 0; y < height; ++y) {
         for (int x = 0; x < width; ++x) {
@@ -44,7 +44,7 @@ void saveBMP(const char* filename, uchar3* pixels, int width, int height) {
         }
     }
 
-    // 3. Ğ´ÈëÎÄ¼ş
+    // 3. å†™å…¥æ–‡ä»¶
     std::ofstream file(filename, std::ios::binary);
     file.write(reinterpret_cast<char*>(&header), sizeof(header));
     file.write(reinterpret_cast<char*>(rgb_data), width * height * 3);
@@ -55,7 +55,7 @@ void saveBMP(const char* filename, uchar3* pixels, int width, int height) {
     //    BITMAPINFO bmi{};
     //    bmi.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
     //    bmi.bmiHeader.biWidth = width;
-    //    bmi.bmiHeader.biHeight = -height; // ¸ºÖµ±íÊ¾´ÓÉÏµ½ÏÂ´æ´¢
+    //    bmi.bmiHeader.biHeight = -height; // è´Ÿå€¼è¡¨ç¤ºä»ä¸Šåˆ°ä¸‹å­˜å‚¨
     //    bmi.bmiHeader.biPlanes = 1;
     //    bmi.bmiHeader.biBitCount = 24;
 
